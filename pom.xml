@@ -13,6 +13,7 @@
 	<artifactId>spring-cloud-common-oauth-feigh</artifactId>
 	<packaging>jar</packaging>
 	<version>1.0</version>
+	<description>This project encapsulates the necessary functions of the oauth resource service, and encapsulates the oauth function of the weight client.</description>
 
 	<name>${project.groupId}:${project.artifactId}</name>
 	<url>https://github.com/MountCloud/spring-cloud-common-oauth-feigh</url>
