@@ -13,8 +13,32 @@
 	<artifactId>spring-cloud-common-oauth-feigh</artifactId>
 	<packaging>jar</packaging>
 	<version>1.0</version>
-	<name>spring-cloud-common-oauth-feigh</name>
-	<url>http://maven.apache.org</url>
+
+	<name>${project.groupId}:${project.artifactId}</name>
+	<url>https://github.com/MountCloud/spring-cloud-common-oauth-feigh</url>
+
+	<!-- 声明license -->
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+		</license>
+	</licenses>
+
+	<!-- 开发者信息 -->
+	<developers>
+		<developer>
+			<name>mountcloud</name>
+			<email>moutcloud@outlook.com</email>
+		</developer>
+	</developers>
+
+	<!-- “采购”信息，主要是自己项目的git仓库 -->
+	<scm>
+		<connection>scm:git:git@github.com:MountCloud/spring-cloud-common-oauth-feigh.git</connection>
+		<developerConnection>scm:git:git@github.com:MountCloud/spring-cloud-common-oauth-feigh.git</developerConnection>
+		<url>git@github.com:MountCloud/spring-cloud-common-oauth-feigh.git</url>
+	</scm>
 
 
 	<dependencies>
@@ -40,40 +64,67 @@
 
 	</dependencies>
 
-	<build>
-		<plugins>
-			<!-- 编译级别 -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.1</version>
-				<configuration>
-					<source>8</source>
-					<target>8</target>
-				</configuration>
-			</plugin>
-			<!-- 打包的时候跳过测试junit begin -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.17</version>
-				<configuration>
-					<skip>true</skip>
-				</configuration>
-			</plugin>
-			<!-- Source attach plugin -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>attach-sources</id>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
+	<!-- 其他介绍 -->
+	<profiles>
+		<profile>
+			<id>release</id>
+			<build>
+				<plugins>
+					<!-- Source -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-source-plugin</artifactId>
+						<version>2.2.1</version>
+						<executions>
+							<execution>
+								<phase>package</phase>
+								<goals>
+									<goal>jar-no-fork</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<!-- Javadoc -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-javadoc-plugin</artifactId>
+						<version>2.9.1</version>
+						<executions>
+							<execution>
+								<phase>package</phase>
+								<goals>
+									<goal>jar</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<!-- GPG -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<version>1.5</version>
+						<executions>
+							<execution>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+			<distributionManagement>
+				<snapshotRepository>
+					<id>mountoss</id>
+					<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+				</snapshotRepository>
+				<repository>
+					<id>mountoss</id>
+					<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+				</repository>
+			</distributionManagement>
+		</profile>
+	</profiles>
+
 </project>
