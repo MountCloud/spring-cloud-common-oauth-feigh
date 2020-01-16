@@ -28,8 +28,7 @@ import feign.codec.ErrorDecoder;
 /**
  * @author zhanghaishan
  * @version V1.0
- * org.mountcloud.mvc.common.oauth2feigh.config
- * TODO:
+ * TODO: Feigh客户端oauth配置
  * 2020年1月8日.
  */
 public class Oauth2FeighClientConfig {
@@ -51,7 +50,6 @@ public class Oauth2FeighClientConfig {
     //尝试配置
     @Bean
     public Retryer retryer() {
-    	//ResponseEntityDecoder
     	return new Retryer.Default(100, 1000, 3);
     }
     
@@ -107,7 +105,7 @@ public class Oauth2FeighClientConfig {
 			//如果是401的话，设置空token并且重试
 			if(HttpStatus.UNAUTHORIZED.value()==response.status()) {
 				oAuth2ClientContext.setAccessToken(null);
-				return new RetryableException(response.status(), "token 可能失效或过期，重新尝试请求", response.request().httpMethod(), new Date(), response.request());
+				return new RetryableException(response.status(), "Token validation failed", response.request().httpMethod(), new Date(), response.request());
 			}
 			
 			return FeignException.errorStatus(methodKey, response);

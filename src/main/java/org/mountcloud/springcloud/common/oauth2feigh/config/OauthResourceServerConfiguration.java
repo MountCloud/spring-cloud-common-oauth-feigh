@@ -16,6 +16,13 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.R
 import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.token.ResourceServerTokenServices;
 
+/**
+  * @author zhanghaishan
+  * @version V1.0
+  *
+  * TODO: oauth资源服务的配置，用于配置资源服务的安全策略，我将这个类的order设置成了101，如果有自己特殊的配置需要设置order在101之前
+  * 2020/1/17.
+  */
 @Order(101)
 public final class OauthResourceServerConfiguration extends ResourceServerConfigurerAdapter{
 

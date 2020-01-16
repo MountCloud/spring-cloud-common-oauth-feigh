@@ -15,12 +15,15 @@ import org.springframework.security.core.context.SecurityContextHolder;
 /**
  * @author zhanghaishan
  * @version V1.0
- * org.mountcloud.mvc.common.oauth2feigh.util
- * TODO:
+ * TODO: 安全工具
  * 2020年1月13日.
  */
 public class SecurityUtil {
-	
+
+	/**
+	 * 获取当前登录的用户
+	 * @return 当前登录用户
+	 */
 	public static BaseUserDetails getLoginUser() {
 		BaseUserDetails baseUserDetails = null;
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -32,7 +35,11 @@ public class SecurityUtil {
 		}
 		return baseUserDetails;
 	}
-	
+
+	/**
+	 * 是不是系统用户
+	 * @return 结果
+	 */
 	public static boolean isSystemUser() {
 		BaseUserDetails baseUserDetails = getLoginUser();
 		if(baseUserDetails!=null) {

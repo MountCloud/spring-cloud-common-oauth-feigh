@@ -14,7 +14,7 @@ import org.springframework.security.core.Authentication;
  * @author zhanghaishan
  * @version V1.0
  * org.mountcloud.mvc.common.oauth2feigh.permission
- * TODO:
+ * TODO: PreInvocationAuthorizationAdviceVoter验证器添加系统用户验证
  * 2020年1月13日.
  */
 public class OauthRoleVoter extends RoleVoter{

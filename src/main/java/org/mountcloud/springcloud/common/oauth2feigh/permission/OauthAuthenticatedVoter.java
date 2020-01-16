@@ -13,8 +13,7 @@ import org.springframework.security.core.Authentication;
 /**
  * @author zhanghaishan
  * @version V1.0
- * org.mountcloud.mvc.common.oauth2feigh.permission
- * TODO:
+ * TODO: AuthenticatedVoter 验证器，添加系统用户验证
  * 2020年1月13日.
  */
 public class OauthAuthenticatedVoter extends AuthenticatedVoter{

@@ -13,8 +13,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 /**
  * @author zhanghaishan
  * @version V1.0
- * org.mountcloud.mvc.common.oauth2feigh
- * TODO:
+ * TODO: 开启具有Oauth2的Feigh客户端
  * 2020年1月8日.
  */
 @Target(ElementType.TYPE)

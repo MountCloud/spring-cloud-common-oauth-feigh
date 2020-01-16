@@ -10,6 +10,13 @@ import org.mountcloud.springcloud.common.oauth2feigh.config.OauthResourceServerC
 import org.springframework.context.annotation.Import;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 
+/**
+  * @author zhanghaishan
+  * @version V1.0
+  *
+  * TODO: 启用oauth的资源服务
+  * 2020/1/17.
+  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented

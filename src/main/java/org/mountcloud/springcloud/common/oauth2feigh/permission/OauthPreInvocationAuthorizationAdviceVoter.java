@@ -9,21 +9,19 @@ import org.springframework.security.access.prepost.PreInvocationAuthorizationAdv
 import org.springframework.security.access.prepost.PreInvocationAuthorizationAdviceVoter;
 import org.springframework.security.core.Authentication;
 
+/**
+  * @author zhanghaishan
+  * @version V1.0
+  *
+  * TODO: PreInvocationAuthorizationAdviceVoter 验证器添加系统用户验证
+  * 2020/1/17.
+  */
 public class OauthPreInvocationAuthorizationAdviceVoter extends PreInvocationAuthorizationAdviceVoter{
 	
 	public OauthPreInvocationAuthorizationAdviceVoter(PreInvocationAuthorizationAdvice pre) {
 		super(pre);
 	}
-	
-	
-	/**
-		vote()方法的返回结果会是AccessDecisionVoter中定义的三个常量之一。
-		ACCESS_GRANTED表示同意，ACCESS_DENIED表示返回，ACCESS_ABSTAIN表示弃权。
-		如果一个AccessDecisionVoter不能判定当前Authentication是否拥有访问对应受保护对象的权限，则其vote()方法的返回值应当为弃权ACCESS_ABSTAIN。
-		int ACCESS_GRANTED = 1;
-		int ACCESS_ABSTAIN = 0;
-		int ACCESS_DENIED = -1;
-	 */
+
 	@Override
 	public int vote(Authentication authentication, MethodInvocation method, Collection<ConfigAttribute> attributes) {
 		//系统权限级别最高

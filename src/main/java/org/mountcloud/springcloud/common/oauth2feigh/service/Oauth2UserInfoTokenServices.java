@@ -13,6 +13,13 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.common.exceptions.InvalidTokenException;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
 
+/**
+  * @author zhanghaishan
+  * @version V1.0
+  *
+  * TODO: oauth资源服务的token服务，这里认为获取token信息的借口返回的是RestfResult，data为BaseUserDetails类型
+  * 2020/1/17.
+  */
 public class Oauth2UserInfoTokenServices extends UserInfoTokenServices{
 
 	public Oauth2UserInfoTokenServices(String userInfoEndpointUrl, String clientId) {
@@ -37,7 +44,7 @@ public class Oauth2UserInfoTokenServices extends UserInfoTokenServices{
 		baseUserDetails.setUsername(StringUtil.toString(MapUtil.getVal(map, "data.username")));
 		List authorities = ListUtil.toList(MapUtil.getVal(map, "data.authorities"));
 
-		//必须将权限放到map里
+		//必须将权限放到map里，外层会取这个权限
 		map.put("authorities",authorities);
 
 		List<GrantedAuthority> grantedAuthoritys = new ArrayList<GrantedAuthority>();

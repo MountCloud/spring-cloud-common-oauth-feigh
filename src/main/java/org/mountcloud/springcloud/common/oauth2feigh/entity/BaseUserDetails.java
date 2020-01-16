@@ -11,8 +11,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 /**
  * @author zhanghaishan
  * @version V1.0
- * org.mountcloud.server.oauth2.entity
- * TODO:
+ * TODO: 用户信息实体
  * 2020年1月6日.
  */
 public class BaseUserDetails implements UserDetails{
