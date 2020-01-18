@@ -5,14 +5,14 @@
 	<parent>
 		<groupId>org.mountcloud</groupId>
 		<artifactId>spring-cloud-common-parent</artifactId>
-		<version>2.2.1.RELEASE-Hoxton.RELEASE-1.0</version>
+		<version>2.2.1.RELEASE-Hoxton.RELEASE-1.1</version>
 	</parent>
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.mountcloud</groupId>
 	<artifactId>spring-cloud-common-oauth-feigh</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0</version>
+	<version>1.1</version>
 	<description>This project encapsulates the necessary functions of the oauth resource service, and encapsulates the oauth function of the weight client.</description>
 
 	<name>${project.groupId}:${project.artifactId}</name>
