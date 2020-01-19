@@ -20,7 +20,7 @@
 </dependency>
 ```
 ## Open Functions 开启功能
- 此注解将为feigh开启oauth鉴权
+ 此注解将为feigh开启oauth鉴权,This annotation will enable oauth authentication for the feigh.
 ```
 @EnableOAuth2FeighClient
 
@@ -36,7 +36,7 @@ security:
          user-logout-uri: ${oauthurl:http://127.0.0.1:8904}/api/auth/oauth/logout
          grant-type: client_credentials
 ```
-此注解将启用OauthResource鉴权
+此注解将启用OauthResource鉴权,This annotation will enable OauthResource authentication
 ```
 @EnableOauthResourceServer
 
@@ -52,9 +52,31 @@ security:
          prefer-token-info: false
 ```
 
+# NOTE
+   Every SpringCloud service (except these special services of Gateway) needs to authenticate with the oauth. It may also need to provide an interface for other services or clients to use (Resource). In the process of use, authentication is also required, and feigh calls other The service interface also needs to be authenticated, and these tasks are repetitive tasks in each service, so I extracted these services as a separate module.
+
 # 描述
   每个SpringCloud服务（除了Gateway这些特殊服务）都需要对接oauth进行鉴权，有可能也需要提供接口供其他服务使用或者客户端使用（Resource），使用过程中也是需要鉴权，而feigh在调用其他服务接口时也是需要进行鉴权，而且这些工作在每个服务中都是重复性的工作，于是我将这些业务提取了出来作为了一个单独的模块。
   
+
+# Constraints
+  Use of this module requires these constraints:
+  
+  After the introduction of this module, ROLE_SYSTEM is a system-level permission. It has the highest permission and ignores all permission verifications. Unless adjustments are made in the project, the purpose of doing this is to allow the right to enjoy the highest permission. The management of permissions is not placed at the right. The controller that exposes the api to manage permissions, the following is the default permission relationship.
+```
+ROLE_SYSTEM> ROLE_ADMIN
+ROLE_ADMIN> ROLE_USER
+`` `
+  
+  (Optional or custom) Provide ROLE_SYSTEM for the feigh, see the code below.
+  
+  The Oauth Resource (security.oauth2.resource.user-info-uri configuration) interface that uses tokens to obtain user information must return content in this format:
+ 
+```
+org.mountcloud.springproject.common.result.RestfulResult <org.mountcloud.springcloud.common.oauth2feigh.entity.BaseUserDetails>
+```
+  Because in this module, the resource parsing user information service obtaining permission part is adapted for this type, and it is also a way to restrict the rest interfaces to return RestfulResult.
+
 # 约束
   使用此模块需要遵循这些约束：
   
@@ -73,7 +95,10 @@ org.mountcloud.springproject.common.result.RestfulResult<org.mountcloud.springcl
 ```
   因为此模块中，resource解析用户信息业务获取权限部分针对此类型做了适配，也是约束rest接口均返回RestfulResult的一种方式。
   
-  参考的代码片段（demo）
+  
+# security.oauth2.resource.user-info-uri code,security.oauth2.resource.user-info-uri代码
+  The data types that security.oauth2.resource.user-info-uri needs to return are already stated in the constraints。
+  约束中已经说明了security.oauth2.resource.user-info-uri需要返回的数据类型
 ```
 @RestController
 @RequestMapping("/user")
