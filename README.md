@@ -1,4 +1,8 @@
 # USE 使用
+```
+Application Main class add
+@ComponentScan(basePackages={"you project package","org.mountcloud.springcloud"})
+```
 ##  USE spring cloud common ，使用spring cloud common方式
 ```
 <parent>
