@@ -158,3 +158,48 @@ public class OauthUserController {
 }
 ```
 所以security.oauth2.resource.user-info-uri配置为：http://${oauthserver}/user/me
+
+
+# Files 文件列表
+```
+.
+├── .gitignore
+├── pom.xml
+├── README.md
+└── src
+    ├── main
+    │   └── java
+    │       └── org
+    │           └── mountcloud
+    │               └── springcloud
+    │                   └── common
+    │                       └── oauth2feigh
+    │                           ├── config
+    │                           │   ├── Oauth2FeighClientConfig.java
+    │                           │   ├── Oauth2MethodSecurityConfig.java
+    │                           │   ├── OauthResourceServerConfiguration.java
+    │                           │   └── RoleConfig.java
+    │                           ├── EnableOAuth2FeighClient.java
+    │                           ├── EnableOauthResourceServer.java
+    │                           ├── entity
+    │                           │   ├── BaseUserDetails.java
+    │                           │   └── Oauth2PermitUrl.java
+    │                           ├── permission
+    │                           │   ├── Oauth2SystemRoleMethodSecurityExpressionHandler.java
+    │                           │   ├── OauthAuthenticatedVoter.java
+    │                           │   ├── OauthJsr250Voter.java
+    │                           │   ├── OauthPreInvocationAuthorizationAdviceVoter.java
+    │                           │   └── OauthRoleVoter.java
+    │                           ├── service
+    │                           │   └── Oauth2UserInfoTokenServices.java
+    │                           └── util
+    │                               └── SecurityUtil.java
+    └── test
+        └── java
+            └── org
+                └── mountcloud
+                    └── springcloud
+                        └── common
+                            └── oauth2feigh
+                                └── package-info.java
+```
