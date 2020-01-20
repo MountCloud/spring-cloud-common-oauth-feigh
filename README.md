@@ -1,3 +1,8 @@
+# DEMO
+  The demo includes the usage of all components in the framework (Redis, Mybatis, Mongodb, Oauth).Demo中包含了框架中所有组件的使用方式（Redis、Mybatis、Mongodb、Oauth）。
+
+https://github.com/MountCloud/spring-cloud-common-demo
+
 # USE 使用
 ```
 Application Main class add
